@@ -1,0 +1,1663 @@
+<!DOCTYPE html>
+<html lang="fr" class="h-full bg-slate-950 text-slate-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Culture Économique - Examen 2025 & Révisions</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        /* Flashcard perspective 3D */
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+        .transform-style-3d {
+            transform-style: preserve-3d;
+        }
+        .backface-hidden {
+            backface-visibility: hidden;
+        }
+        .rotate-y-180 {
+            transform: rotateY(180deg);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+    </style>
+</head>
+<body class="h-full flex flex-col overflow-x-hidden antialiased selection:bg-indigo-500 selection:text-white">
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-40 w-full border-b border-slate-800 bg-slate-950/80 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo & Title -->
+                <div class="flex items-center space-x-3">
+                    <div class="p-2 bg-gradient-to-tr from-indigo-600 to-violet-500 rounded-xl shadow-lg shadow-indigo-500/20">
+                        <i data-lucide="graduation-cap" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <div>
+                        <h1 class="font-bold text-lg leading-tight bg-gradient-to-r from-white via-slate-200 to-indigo-300 bg-clip-text text-transparent">
+                            Culture Économique
+                        </h1>
+                        <p class="text-xs text-slate-400 font-medium">DEGEAD 1 - Université Paris Dauphine-PSL</p>
+                    </div>
+                </div>
+
+                <!-- Navigation Tabs -->
+                <nav class="hidden md:flex space-x-1 bg-slate-900/80 p-1.5 rounded-xl border border-slate-800">
+                    <button onclick="switchTab('exam2025')" id="tab-btn-exam2025" class="tab-btn flex items-center space-x-2 px-4 py-2 text-sm font-semibold rounded-lg transition-all text-white bg-indigo-600 shadow-md">
+                        <i data-lucide="award" class="w-4 h-4"></i>
+                        <span>Examen Officiel 2025 (30 Q)</span>
+                    </button>
+                    <button onclick="switchTab('flashcards')" id="tab-btn-flashcards" class="tab-btn flex items-center space-x-2 px-4 py-2 text-sm font-semibold rounded-lg transition-all text-slate-400 hover:text-white hover:bg-slate-800/60">
+                        <i data-lucide="layers" class="w-4 h-4"></i>
+                        <span>Fiches & Flashcards (30+)</span>
+                    </button>
+                    <button onclick="switchTab('simulators')" id="tab-btn-simulators" class="tab-btn flex items-center space-x-2 px-4 py-2 text-sm font-semibold rounded-lg transition-all text-slate-400 hover:text-white hover:bg-slate-800/60">
+                        <i data-lucide="calculator" class="w-4 h-4"></i>
+                        <span>Simulateurs & Graphiques</span>
+                    </button>
+                </nav>
+
+                <!-- Score Status Badge -->
+                <div class="hidden lg:flex items-center space-x-3 bg-slate-900 border border-slate-800 px-3.5 py-1.5 rounded-full">
+                    <div class="flex items-center space-x-1.5 text-xs text-slate-300">
+                        <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+                        <span class="font-medium">Statut Examen :</span>
+                        <span id="header-status" class="font-bold text-amber-400">En cours</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Bar -->
+        <div class="md:hidden border-t border-slate-800 bg-slate-900 px-2 py-2 flex justify-around">
+            <button onclick="switchTab('exam2025')" id="mob-btn-exam2025" class="mob-tab-btn flex flex-col items-center p-2 text-xs font-medium text-indigo-400">
+                <i data-lucide="award" class="w-5 h-5 mb-1"></i>
+                <span>Examen 2025</span>
+            </button>
+            <button onclick="switchTab('flashcards')" id="mob-btn-flashcards" class="mob-tab-btn flex flex-col items-center p-2 text-xs font-medium text-slate-400">
+                <i data-lucide="layers" class="w-5 h-5 mb-1"></i>
+                <span>Flashcards</span>
+            </button>
+            <button onclick="switchTab('simulators')" id="mob-btn-simulators" class="mob-tab-btn flex flex-col items-center p-2 text-xs font-medium text-slate-400">
+                <i data-lucide="calculator" class="w-5 h-5 mb-1"></i>
+                <span>Outils</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- ================= SECTION 1: EXAMEN OFFICIEL 2025 ================= -->
+        <section id="tab-exam2025" class="tab-content space-y-6">
+            
+            <!-- Exam Banner / Instructions -->
+            <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl shadow-xl flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                <div>
+                    <div class="flex items-center space-x-2 text-xs font-bold text-indigo-400 uppercase tracking-wider mb-1">
+                        <i data-lucide="file-check-2" class="w-4 h-4"></i>
+                        <span>Sujet Officiel d'Annales — 27 Octobre 2025</span>
+                    </div>
+                    <h2 class="text-xl font-extrabold text-white">Examen de Culture Économique (Pr. Richard Dutu)</h2>
+                    <p class="text-xs text-slate-400 mt-1 max-w-2xl">
+                        30 questions à choix multiples (1 pt par question). La correction détaillée et votre note finale sur 30 s'afficheront après avoir cliqué sur <strong>"Soumettre ma copie"</strong>.
+                    </p>
+                </div>
+                <div class="flex flex-col sm:flex-row items-center gap-3 w-full md:w-auto">
+                    <button onclick="resetExam()" class="w-full sm:w-auto px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs font-semibold rounded-xl transition flex items-center justify-center gap-2">
+                        <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+                        Réinitialiser
+                    </button>
+                    <button onclick="submitExam()" id="submit-btn" class="w-full sm:w-auto px-6 py-2.5 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-bold text-xs rounded-xl shadow-lg shadow-indigo-500/25 transition flex items-center justify-center gap-2">
+                        <i data-lucide="send" class="w-4 h-4"></i>
+                        Soumettre ma copie
+                    </button>
+                </div>
+            </div>
+
+            <!-- Exam Score Results Summary -->
+            <div id="results-card" class="hidden bg-gradient-to-r from-indigo-950/80 via-slate-900 to-slate-900 border-2 border-indigo-500/50 p-6 rounded-2xl shadow-2xl space-y-4">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                    <div>
+                        <span class="text-xs uppercase tracking-wider text-indigo-300 font-bold">Résultat Officiel</span>
+                        <h3 id="result-title" class="text-2xl font-black text-white mt-0.5">Votre copie a été corrigée !</h3>
+                    </div>
+                    <div class="bg-slate-950/80 border border-indigo-500/30 px-6 py-3 rounded-xl text-center">
+                        <div class="text-[10px] uppercase text-slate-400 font-semibold">Note Finale</div>
+                        <div id="final-score" class="text-3xl font-black text-emerald-400">0 / 30</div>
+                    </div>
+                </div>
+                <p id="result-feedback" class="text-xs text-slate-300 leading-relaxed border-t border-slate-800 pt-3">
+                    Explications pédagogiques et corrigé complet sous chaque question ci-dessous.
+                </p>
+            </div>
+
+            <!-- Exam Sticky Progress Bar -->
+            <div class="bg-slate-900/90 backdrop-blur-md border border-slate-800 p-4 rounded-xl sticky top-20 z-30 shadow-lg flex flex-col sm:flex-row justify-between items-center gap-3">
+                <div class="w-full sm:w-2/3">
+                    <div class="flex justify-between items-center mb-1.5 text-xs text-slate-400">
+                        <span>Avancement du test</span>
+                        <span id="exam-progress-text" class="font-bold text-indigo-400">0 / 30 répondue</span>
+                    </div>
+                    <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                        <div id="exam-progress-bar" class="bg-gradient-to-r from-indigo-500 to-violet-500 h-full w-0 transition-all duration-300"></div>
+                    </div>
+                </div>
+                <button onclick="scrollToUnanswered()" class="text-xs font-semibold text-slate-400 hover:text-indigo-300 transition flex items-center gap-1 shrink-0">
+                    <i data-lucide="arrow-down-circle" class="w-4 h-4"></i>
+                    <span>Aller à la première non répondue</span>
+                </button>
+            </div>
+
+            <!-- Exam Questions Grid Container -->
+            <div id="exam-container" class="space-y-6">
+                <!-- Injected via JavaScript -->
+            </div>
+
+            <!-- Bottom Floating Submit Button -->
+            <div class="flex justify-center pt-6 pb-12">
+                <button onclick="submitExam()" class="px-8 py-4 bg-gradient-to-r from-indigo-600 via-violet-600 to-indigo-600 hover:opacity-95 text-white font-extrabold text-sm rounded-2xl shadow-2xl shadow-indigo-500/30 transition flex items-center gap-3">
+                    <i data-lucide="check-circle-2" class="w-5 h-5"></i>
+                    <span>Soumettre ma copie et voir le corrigé complet</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- ================= SECTION 2: FLASHCARDS & FICHES ================= -->
+        <section id="tab-flashcards" class="tab-content hidden space-y-6">
+            
+            <!-- Controls Header: Theme Filter + Mode Selector -->
+            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 bg-slate-900 border border-slate-800 p-6 rounded-2xl">
+                <div>
+                    <h2 class="text-xl font-bold text-white">Fiches & Flashcards Synthétiques</h2>
+                    <p class="text-xs text-slate-400 mt-1">Données chiffrées, faits stylisés et graphiques essentiels du cours.</p>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 w-full lg:w-auto">
+                    <!-- Mode Switcher -->
+                    <div class="bg-slate-950 p-1 rounded-xl border border-slate-800 flex shrink-0">
+                        <button id="view-mode-learn" onclick="setFlashcardMode('learn')" class="px-3 py-1.5 text-xs font-bold rounded-lg text-white bg-indigo-600 flex items-center gap-1.5 transition">
+                            <i data-lucide="brain-circuit" class="w-4 h-4"></i>
+                            <span>Mode Apprendre</span>
+                        </button>
+                        <button id="view-mode-grid" onclick="setFlashcardMode('grid')" class="px-3 py-1.5 text-xs font-bold rounded-lg text-slate-400 hover:text-white flex items-center gap-1.5 transition">
+                            <i data-lucide="layout-grid" class="w-4 h-4"></i>
+                            <span>Vue Fiches (Toutes)</span>
+                        </button>
+                    </div>
+
+                    <!-- Theme Filters -->
+                    <div class="flex flex-wrap gap-1.5">
+                        <button onclick="filterCards('all', this)" class="card-filter-btn px-2.5 py-1 text-xs font-semibold rounded-lg bg-indigo-600 text-white">Tous</button>
+                        <button onclick="filterCards('theme1', this)" class="card-filter-btn px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700">T1: Croissance</button>
+                        <button onclick="filterCards('theme2', this)" class="card-filter-btn px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700">T2: État/Marché</button>
+                        <button onclick="filterCards('theme3', this)" class="card-filter-btn px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700">T3: Monnaie</button>
+                        <button onclick="filterCards('theme4', this)" class="card-filter-btn px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700">T4: Inégalités</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODE 1: MODE APPRENDRE (CARTE PAR CARTE) -->
+            <div id="flashcard-learn-container" class="max-w-xl mx-auto space-y-6">
+                <!-- Progress & Stats Bar -->
+                <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl space-y-2">
+                    <div class="flex justify-between text-xs font-semibold">
+                        <span class="text-slate-400">Progression globale :</span>
+                        <span id="learn-stats-text" class="text-indigo-400">0 / 0 maîtrisiées</span>
+                    </div>
+                    <div class="w-full bg-slate-950 h-2.5 rounded-full overflow-hidden border border-slate-800">
+                        <div id="learn-progress-bar" class="bg-gradient-to-r from-indigo-500 to-emerald-400 h-full w-0 transition-all duration-300"></div>
+                    </div>
+                    <div class="flex justify-between text-[11px] text-slate-500 font-medium pt-1">
+                        <span>Cartes restantes : <strong id="learn-remaining-count" class="text-slate-300">0</strong></span>
+                        <span>Acquises : <strong id="learn-mastered-count" class="text-emerald-400">0</strong></span>
+                    </div>
+                </div>
+
+                <!-- Single Card Container -->
+                <div id="single-card-area">
+                    <!-- Injected dynamically in JS -->
+                </div>
+
+                <!-- Action Controls (À revoir vs Compris) -->
+                <div id="learn-action-controls" class="grid grid-cols-2 gap-4">
+                    <button onclick="markCurrentCard(false)" class="p-4 bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/30 rounded-2xl font-bold text-sm transition flex items-center justify-center gap-2 shadow-lg">
+                        <i data-lucide="x-circle" class="w-5 h-5"></i>
+                        <span>❌ À revoir</span>
+                    </button>
+                    <button onclick="markCurrentCard(true)" class="p-4 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-2xl font-bold text-sm transition flex items-center justify-center gap-2 shadow-lg">
+                        <i data-lucide="check-circle" class="w-5 h-5"></i>
+                        <span>✅ Compris !</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- MODE 2: VUE GRILLE (TOUTES LES FICHES) -->
+            <div id="flashcards-grid" class="hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Injected via JS -->
+            </div>
+        </section>
+
+        <!-- ================= SECTION 3: SIMULATEURS & GRAPHIQUES ================= -->
+        <section id="tab-simulators" class="tab-content hidden space-y-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- 1. Multiplicateur Keynésien -->
+                <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl shadow-lg flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                                <i data-lucide="zap" class="w-5 h-5 text-indigo-400"></i>
+                                Multiplicateur Keynésien
+                            </h3>
+                            <span class="text-xs px-2.5 py-1 rounded-full bg-indigo-500/10 text-indigo-400 font-medium border border-indigo-500/20">Modèle Macro</span>
+                        </div>
+                        <p class="text-xs text-slate-400 mb-6">
+                            Simulez l'effet d'une injection de dépense publique ($G$) sur le revenu national ($Y$) selon la propension marginale à consommer ($c$).
+                        </p>
+
+                        <div class="space-y-4 bg-slate-950 p-4 rounded-xl border border-slate-800">
+                            <div>
+                                <div class="flex justify-between text-xs font-medium mb-1">
+                                    <label class="text-slate-300">Propension marginale à consommer ($c$)</label>
+                                    <span id="pmc-val" class="text-indigo-400 font-bold">0.80</span>
+                                </div>
+                                <input type="range" id="pmc-input" min="0.1" max="0.95" step="0.05" value="0.8" class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-indigo-500" oninput="updateKeynesian()">
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between text-xs font-medium mb-1">
+                                    <label class="text-slate-300">Injection Dépense Publique ($\Delta G$)</label>
+                                    <span id="dg-val" class="text-emerald-400 font-bold">10 Mld €</span>
+                                </div>
+                                <input type="range" id="dg-input" min="1" max="100" step="1" value="10" class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-500" oninput="updateKeynesian()">
+                            </div>
+                        </div>
+
+                        <div class="mt-6 grid grid-cols-2 gap-4">
+                            <div class="bg-slate-950/60 border border-slate-800 p-4 rounded-xl text-center">
+                                <span class="text-[11px] uppercase tracking-wider text-slate-400 font-medium">Multiplicateur $k$</span>
+                                <div id="k-result" class="text-2xl font-extrabold text-indigo-400 mt-1">5.00</div>
+                            </div>
+                            <div class="bg-slate-950/60 border border-slate-800 p-4 rounded-xl text-center">
+                                <span class="text-[11px] uppercase tracking-wider text-slate-400 font-medium">Impact PIB ($\Delta Y$)</span>
+                                <div id="dy-result" class="text-2xl font-extrabold text-emerald-400 mt-1">+50 Mld €</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Calculateur PIB -->
+                <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl shadow-lg flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                                <i data-lucide="pie-chart" class="w-5 h-5 text-violet-400"></i>
+                                Calculateur PIB (Optique Demande)
+                            </h3>
+                            <span class="text-xs px-2.5 py-1 rounded-full bg-violet-500/10 text-violet-400 font-medium border border-violet-500/20">Comptabilité</span>
+                        </div>
+                        <p class="text-xs text-slate-400 mb-4">Égalité des ressources et emplois : $Y = C + I + G + (X - M)$.</p>
+
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 bg-slate-950 p-4 rounded-xl border border-slate-800 text-xs">
+                            <div>
+                                <label class="text-slate-400 block mb-1">Consommation ($C$)</label>
+                                <input type="number" id="pib-c" value="1200" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-white font-semibold focus:outline-none focus:border-violet-500" oninput="calculatePIB()">
+                            </div>
+                            <div>
+                                <label class="text-slate-400 block mb-1">Investissement ($I$)</label>
+                                <input type="number" id="pib-i" value="450" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-white font-semibold focus:outline-none focus:border-violet-500" oninput="calculatePIB()">
+                            </div>
+                            <div>
+                                <label class="text-slate-400 block mb-1">Dépenses Pub. ($G$)</label>
+                                <input type="number" id="pib-g" value="550" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-white font-semibold focus:outline-none focus:border-violet-500" oninput="calculatePIB()">
+                            </div>
+                            <div>
+                                <label class="text-slate-400 block mb-1">Exportations ($X$)</label>
+                                <input type="number" id="pib-x" value="700" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-white font-semibold focus:outline-none focus:border-violet-500" oninput="calculatePIB()">
+                            </div>
+                            <div>
+                                <label class="text-slate-400 block mb-1">Importations ($M$)</label>
+                                <input type="number" id="pib-m" value="750" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-white font-semibold focus:outline-none focus:border-violet-500" oninput="calculatePIB()">
+                            </div>
+                            <div>
+                                <label class="text-slate-400 block mb-1">Solde Ext. ($X - M$)</label>
+                                <div id="pib-solde" class="py-1.5 font-bold text-rose-400">-50 Mld €</div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 bg-gradient-to-r from-violet-900/40 to-indigo-900/40 border border-violet-700/40 p-4 rounded-xl flex justify-between items-center">
+                            <div>
+                                <span class="text-xs uppercase tracking-wider text-slate-300 font-semibold block">Produit Intérieur Brut Total</span>
+                            </div>
+                            <div id="pib-total" class="text-3xl font-black text-white">2150 Mld €</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lorenz & Gini -->
+            <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl shadow-lg">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                    <div>
+                        <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                            <i data-lucide="line-chart" class="w-5 h-5 text-emerald-400"></i>
+                            Courbe de Lorenz & Indice de Gini
+                        </h3>
+                    </div>
+                    <div class="flex items-center space-x-4 bg-slate-950 p-3 rounded-xl border border-slate-800 min-w-[260px]">
+                        <label class="text-xs text-slate-300 font-medium">Inégalité :</label>
+                        <input type="range" id="gini-slider" min="0" max="1" step="0.05" value="0.35" class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-500" oninput="updateGiniChart()">
+                        <span id="gini-val" class="text-sm font-bold text-emerald-400 w-12 text-right">0.35</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-center">
+                    <div class="lg:col-span-2 bg-slate-950 p-4 rounded-xl border border-slate-800 h-[300px] relative">
+                        <canvas id="lorenzChart"></canvas>
+                    </div>
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
+                        <div class="text-xs text-slate-400">Indice de Gini simulé</div>
+                        <div id="gini-status" class="text-2xl font-extrabold text-emerald-400 mt-1">0.35 (Inégalité Modérée)</div>
+                        <p id="gini-desc" class="text-xs text-slate-400 mt-2 leading-relaxed">
+                            Distribution des revenus observée dans la plupart des économies occidentales développées.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 bg-slate-950 py-6 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs text-slate-500">
+            <p>Annales d'Examen 2025 - Université Paris Dauphine-PSL — Culture Économique</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTING -->
+    <script>
+        /* ================= 30 OFFICIAL EXAM 2025 QUESTIONS ================= */
+        const exam2025Questions = [
+            {
+                id: 1,
+                question: "Parmi les définitions suivantes de la science économique, laquelle vous parait le moins bien décrire la discipline ?",
+                options: [
+                    "L'économie correspond à l'ensemble des outils, analyses et théories visant à comprendre et favoriser la prospérité des nations.",
+                    "L'économie utilise des outils, analyses et modèles pour étudier les rapports entre l'État et le secteur privé dans le but de favoriser la croissance.",
+                    "L'économie correspond à l'ensemble des activités d'une collectivité humaine relatives à la production, à la distribution et à la consommation des richesses.",
+                    "L'économie étudie l'allocation optimale de ressources rares à des fins infinies."
+                ],
+                correct: 1,
+                explanation: "La proposition (b) restreint abusivement l'économie aux seuls rapports entre l'État et le secteur privé."
+            },
+            {
+                id: 2,
+                question: "L'Économie Publique a montré que :",
+                options: [
+                    "La présence d'externalités négatives peut être corrigée par la présence d'externalités positives.",
+                    "Les défaillances de marché dues au non respect des conditions de la concurrence pure et parfaite mènent à une allocation sous optimale des ressources.",
+                    "Les quantités échangées sont maximisées quand l'économie satisfait aux conditions de la concurrence pure et parfaite.",
+                    "Les défaillances de l'État empêchent d'atteindre les conditions de la concurrence pure et parfaite."
+                ],
+                correct: 1,
+                explanation: "L'Économie Publique étudie précisément les 'défaillances de marché' qui empêchent l'allocation optimale de Pareto sans intervention."
+            },
+            {
+                id: 3,
+                question: "Un monopsone :",
+                options: [
+                    "Est le nom donné pour décrire une entreprise étant la seule acheteuse sur un marché.",
+                    "Est le nom donné pour décrire une entreprise étant la seule vendeuse sur un marché.",
+                    "Est le nom donné pour décrire une entreprise trop petite pour avoir un impact sur le marché.",
+                    "Est le nom donné pour décrire une entreprise en situation de monopole naturel."
+                ],
+                correct: 0,
+                explanation: "Un monopsone désigne une structure de marché caractérisée par un acheteur unique face à une multitude de vendeurs."
+            },
+            {
+                id: 4,
+                question: "L'inflation :",
+                options: [
+                    "Entraîne une hausse du salaire réel, même si le salaire nominal est constant.",
+                    "Favorise les emprunteurs au détriment des prêteurs.",
+                    "Pénalise davantage les hauts revenus.",
+                    "A connu un pic autour de 15% en France au milieu des années 1990."
+                ],
+                correct: 1,
+                explanation: "L'inflation érode la valeur réelle de la monnaie, allégeant la charge de remboursement de la dette pour l'emprunteur."
+            },
+            {
+                id: 5,
+                question: "Le pourcentage de la population mondiale vivant dans l'extrême pauvreté (moins de 1 dollar américain par jour) :",
+                options: [
+                    "Est passé de 50% à 20% environ entre 1800 et l'an 2000.",
+                    "Est passé de 50% à 20% environ entre 1800 et 1970 pour remonter à 30% en l'an 2000.",
+                    "Est passé de 80% à 50% environ entre 1800 et l'an 2000.",
+                    "Est passé de 80% à 20% environ entre 1800 et l'an 2000."
+                ],
+                correct: 3,
+                explanation: "Grâce à la croissance économique issue de la Révolution Industrielle, l'extrême pauvreté est passée de ~80% en 1800 à ~20% en 2000."
+            },
+            {
+                id: 6,
+                question: "Mesuré en dollars américains courants par habitant, le pays le plus pauvre du monde en 2021 était selon le FMI :",
+                options: ["Haïti", "Le Burundi", "Le Bénin", "Le Yémen"],
+                correct: 1,
+                explanation: "En PIB nominal courant par habitant en 2021, le Burundi affichait le chiffre le plus faible au monde."
+            },
+            {
+                id: 7,
+                question: "Parmi les contributions suivantes à la science économique, laquelle n'est pas due aux Physiocrates ?",
+                options: [
+                    "Une catégorisation des agents économiques.",
+                    "Des règles de bonne conduite en matière de frappe des pièces de monnaie.",
+                    "Une esquisse de comptabilité nationale via le « Produit Net ».",
+                    "L'économie envisagée comme un circuit avec des flux circulant entre différentes catégories d'agents."
+                ],
+                correct: 1,
+                explanation: "Les Physiocrates ont inventé le circuit économique, la distinction des classes et le Produit Net, mais pas les règles monétaires de frappe."
+            },
+            {
+                id: 8,
+                question: "Parmi les phrases suivantes, laquelle n'est probablement pas d'Adam Smith ?",
+                options: [
+                    "En fait, l'impulsion fondamentale qui met et maintient en mouvement la machine capitaliste est imprimée par les nouveaux objets de consommation...",
+                    "Dans chaque art, la division du travail, aussi loin qu'elle peut y être portée, amène un accroissement proportionnel dans la puissance productive...",
+                    "Il est vrai que la nature de l'agriculture ne comporte pas une aussi grande subdivision de travail que les manufactures...",
+                    "Observez, dans un pays civilisé et florissant, ce qu'est le mobilier d'un simple journalier..."
+                ],
+                correct: 0,
+                explanation: "La citation (a) est issue de Joseph Schumpeter (1942) décrivant le processus de destruction créatrice."
+            },
+            {
+                id: 9,
+                question: "Parmi les politiques suivantes, laquelle était recommandée par Adam Smith avant l'avènement de l'Économie Publique ?",
+                options: ["Taxer les pollueurs.", "Subventionner l'éducation.", "La production de biens collectifs par l'État.", "Le contrôle des monopoles naturels."],
+                correct: 1,
+                explanation: "Adam Smith préconisait déjà le financement de l'éducation par l'État pour contrecarrer l'abrutissement lié à la division extrême du travail."
+            },
+            {
+                id: 10,
+                question: "À qui attribuer la phrase « If for warfare, why not for welfare? » ?",
+                options: ["Karl Marx.", "Milton Friedman.", "John M. Keynes.", "William H. Beveridge."],
+                correct: 3,
+                explanation: "William H. Beveridge est l'auteur du rapport de 1942 fondant l'État-Providence britannique."
+            },
+            {
+                id: 11,
+                question: "Which of the following is not an established fact of economic growth?",
+                options: [
+                    "Since 1870, GDP per person in the US economy has grown at a remarkably steady average rate of around 2%.",
+                    "Between the year 1 and 1820, living standards doubled... Over the next 200 years, GDP per person rose by more than a factor of twenty.",
+                    "GDP per person varied widely across countries prior to 1600.",
+                    "Evidence suggests that living standards were stagnant for thousands of years before the Industrial Revolution."
+                ],
+                correct: 2,
+                explanation: "Before 1600, GDP per person was remarkably uniform and stagnant across almost all world regions (Malthusian trap)."
+            },
+            {
+                id: 12,
+                question: "L'effet de substitution :",
+                options: [
+                    "Énonce que suite à une hausse de revenu, un consommateur va substituer des biens onéreux à des biens bon marché.",
+                    "Énonce que si le prix d'un bien A augmente, les consommateurs vont se reporter sur le bien B substituable. La demande pour A baisse.",
+                    "Énonce que quand le prix d'un bien de production A augmente, les entreprises se reportent sur le bien B.",
+                    "Énonce que quand le profit augmente, l'entreprise remplace le travail par du capital."
+                ],
+                correct: 1,
+                explanation: "L'effet de substitution explique le changement de consommation lié à la variation du prix relatif d'un bien."
+            },
+            {
+                id: 13,
+                question: "La prospérité d'une nation est déterminée principalement par :",
+                options: [
+                    "Ses dotations en ressources naturelles.",
+                    "Le nombre d'heures travaillées en moyenne par chaque actif.",
+                    "L'efficience de la dépense publique.",
+                    "La productivité du travail dans cette nation."
+                ],
+                correct: 3,
+                explanation: "C'est la productivité du travail (valeur produite par heure/travailleur) qui détermine le niveau de vie à long terme."
+            },
+            {
+                id: 14,
+                question: "Classer ces politiques de la moins inflationniste à la plus inflationniste (en situation de plein emploi) : 1) Dépense financée par impôts; 2) Emprunt obligataire public; 3) Monétisation par la Banque Centrale; 4) Austérité fiscale sans dépense.",
+                options: ["1, 2, 3 et 4", "4, 3, 2 et 1", "2, 3, 1 et 4", "4, 1, 2 et 3"],
+                correct: 3,
+                explanation: "4 est déflationniste/neutre, 1 est équilibré, 2 capte l'épargne privée, 3 (planche à billets) est la plus inflationniste."
+            },
+            {
+                id: 15,
+                question: "Parmi les affirmations suivantes, laquelle ne pourrait pas être attribuée à Karl Marx ?",
+                options: [
+                    "Les conditions matérielles de production déterminent la conscience et les formes d'organisation sociale...",
+                    "Ce sont l'esprit et les idées humaines qui sont le moteur de l'histoire et déterminent l'état du monde...",
+                    "Pour exister et se reproduire, le capitalisme doit accumuler et s'étendre toujours plus...",
+                    "La bourgeoisie a joué dans l'histoire un rôle éminemment révolutionnaire..."
+                ],
+                correct: 1,
+                explanation: "La proposition (b) correspond à l'idéalisme hégélien. Karl Marx défend le matérialisme historique."
+            },
+            {
+                id: 16,
+                question: "Qui détient la plus grosse part de la dette publique française ?",
+                options: ["Des non résidents.", "Les banques françaises.", "Les compagnies d'assurance françaises.", "Les ménages français."],
+                correct: 0,
+                explanation: "Plus de 50% de la dette négociable de l'État français (OAT) est détenue par des investisseurs non-résidents."
+            },
+            {
+                id: 17,
+                question: "Parmi les indicateurs ci-dessous, lequel n'est pas utilisé pour mesurer les inégalités de revenus ?",
+                options: ["Le taux de pauvreté.", "Le rapport interdécile.", "Le coefficient de Gini sur revenus primaires.", "Le coefficient de Gini sur revenus disponibles."],
+                correct: 0,
+                explanation: "Le taux de pauvreté mesure un seuil de privation, tandis que Gini et le rapport interdécile mesurent la dispersion de toute la population."
+            },
+            {
+                id: 18,
+                question: "En 2024, la part de l'industrie dans le PIB mondial était d'environ :",
+                options: ["5%", "15%", "25%", "35%"],
+                correct: 2,
+                explanation: "L'industrie représente environ 25% du PIB mondial (les services représentant ~65% et l'agriculture ~4%)."
+            },
+            {
+                id: 19,
+                question: "Qui a écrit : « Des gains impressionnants... sont jetés en pâture à une faible minorité de gagnants... » ?",
+                options: ["Karl Marx.", "Joseph Schumpeter.", "Adam Smith.", "François Quesnay."],
+                correct: 1,
+                explanation: "Citation de Schumpeter sur la rente de l'entrepreneur innovateur comme moteur du capitalisme."
+            },
+            {
+                id: 20,
+                question: "Part approximative des salariés rémunérés au SMIC en France en 2023 ?",
+                options: ["9%", "12%", "17%", "27%"],
+                correct: 2,
+                explanation: "En France au 1er janvier 2023, environ 17,3% des salariés du secteur privé étaient au SMIC."
+            },
+            {
+                id: 21,
+                question: "Si le prix des cartouches d'encre augmente, quel est l'impact sur la demande d'imprimantes (biens complémentaires) ?",
+                options: ["Déplacement vers la droite.", "Déplacement vers la gauche.", "Pente plus faible.", "Pente plus raide."],
+                correct: 1,
+                explanation: "Pour deux biens complémentaires, la hausse du prix de l'un réduit la consommation des deux -> déplacement vers la gauche."
+            },
+            {
+                id: 22,
+                question: "Dans « Free to Choose », quel est le message principal de Milton Friedman ?",
+                options: [
+                    "La liberté de choix mène à une allocation optimale.",
+                    "Nous devons redécouvrir la liberté économique et son rôle dans la préservation de la liberté individuelle.",
+                    "La liberté s'arrête aux défaillances de marché.",
+                    "Les délocalisations augmentent le bien-être."
+                ],
+                correct: 1,
+                explanation: "Friedman défend que la liberté économique est indissociable de la liberté individuelle et politique."
+            },
+            {
+                id: 23,
+                question: "Théorie Quantitative ($M \\cdot V = P \\cdot Y$). Si $Y$ est constant et $V$ chute en proportion exacte de la hausse de $M$, le niveau des prix $P$ va :",
+                options: ["Augmenter.", "Baisser.", "Rester inchangé.", "D'abord augmenter puis se stabiliser."],
+                correct: 2,
+                explanation: "Si la hausse de $M$ est annulée par la baisse de $V$, le produit $M \\cdot V$ ne varie pas -> $P$ reste inchangé."
+            },
+            {
+                id: 24,
+                question: "Les inégalités de revenus sont :",
+                options: [
+                    "En moyenne moins prononcées dans les pays riches que dans les pays pauvres.",
+                    "En moyenne moins prononcées avec les revenus primaires.",
+                    "En hausse constante en France depuis 1970.",
+                    "Toujours mauvaises."
+                ],
+                correct: 0,
+                explanation: "Les pays développés ont en moyenne des coefficients de Gini inférieurs grâce aux systèmes de redistribution."
+            },
+            {
+                id: 25,
+                question: "Quelle égalité correspond à l'Égalité Ressources = Emplois en comptabilité nationale ?",
+                options: [
+                    "P + X = C + CI + I + G + M + ΔS + OV",
+                    "X + M = C + CI + I + G + ΔS + OV",
+                    "P + M = C + CI + I + G + X + ΔS + OV",
+                    "P + M + CI = C + I + G + X + ΔS + OV"
+                ],
+                correct: 2,
+                explanation: "Ressources ($P + M$) = Emplois ($C + CI + I + G + X + \\Delta S + OV$)."
+            },
+            {
+                id: 26,
+                question: "Que représente l'équation $K_{t+1} = K_t - \\delta K_t + I_t$ ?",
+                options: [
+                    "L'investissement nécessaire pour maintenir le capital.",
+                    "La formule générale de dynamique d'accumulation du stock de capital dans une économie.",
+                    "Le multiplicateur keynésien.",
+                    "L'équation de Quesnay."
+                ],
+                correct: 1,
+                explanation: "Le capital de demain est égal au capital d'aujourd'hui moins la dépréciation ($\delta K_t$) plus l'investissement brut ($I_t$)."
+            },
+            {
+                id: 27,
+                question: "Parmi les affirmations suivantes, laquelle n'est PAS tirée du texte de Natalia Kolesnikova sur l'éducation ?",
+                options: [
+                    "Education has non monetary returns such as better decisions about health...",
+                    "A study has shown that an increase in college graduates raises high school dropouts' wages by 1.9 percent...",
+                    "Estimates of private returns do not account for all social benefits...",
+                    "In the US over 1970-2010, the rate of return on education equaled the rate of return on capital."
+                ],
+                correct: 3,
+                explanation: "Cette phrase ne figure pas dans l'article de Kolesnikova."
+            },
+            {
+                id: 28,
+                question: "Sur le rôle de l'information dans le marché, Hayek explique que :",
+                options: [
+                    "L'information scientifique domine.",
+                    "L'information circonstancielle domine.",
+                    "L'information ex post domine.",
+                    "L'information statique domine."
+                ],
+                correct: 1,
+                explanation: "Hayek souligne la suprématie de l'information circonstancielle de temps et de lieu dispersée entre les individus."
+            },
+            {
+                id: 29,
+                question: "L'utilisation mondiale des terres pour l'agriculture :",
+                options: [
+                    "Continue d'augmenter à mesure que la population mondiale augmente.",
+                    "Est en baisse depuis les années 1970.",
+                    "A atteint un pic vers l'an 2000 et baisse/se stabilise depuis malgré la hausse démographique.",
+                    "Est en augmentation constante."
+                ],
+                correct: 2,
+                explanation: "Le phénomène de 'Peak Farmland' montre un pic des terres agricoles vers 2000 grâce aux gains de rendement."
+            },
+            {
+                id: 30,
+                question: "En France, rapporté aux recettes publiques, le déficit budgétaire en 2024 s'élevait à :",
+                options: ["11,3%", "5,8%", "117%", "2,9%"],
+                correct: 0,
+                explanation: "Rapporté aux recettes publiques (et non au PIB), le déficit représentait environ 11,3% des recettes."
+            }
+        ];
+
+        /* ================= 30+ FLASHCARDS DATA ================= */
+        const flashcardsData = [
+            {
+                theme: "theme1",
+                tag: "Thème 1",
+                title: "Calcul de la Valeur Ajoutée",
+                front: "Comment calcule-t-on la valeur ajoutée (VA) d'une entreprise ?",
+                back: "VA = Valeur de la production - Consommations intermédiaires. Elle mesure la richesse réellement créée par l'entreprise."
+            },
+            {
+                theme: "theme1",
+                tag: "Thème 1",
+                title: "Consommations Intermédiaires",
+                front: "Qu'appelle-t-on consommations intermédiaires dans une entreprise ?",
+                back: "Les biens et services détruits ou transformés pendant le processus de production (matières premières, énergie, etc.)."
+            },
+            {
+                theme: "theme1",
+                tag: "Thème 1",
+                title: "Les Trois Approches du PIB",
+                front: "Quelles sont les trois approches permettant de calculer le PIB ?",
+                back: "L'approche par la production (VA), par les revenus (salaires et profits) et par la demande (consommation, investissement, etc.)."
+            },
+            {
+                theme: "theme1",
+                tag: "Thème 1",
+                title: "PIB par Habitant",
+                front: "Comment calcule-t-on le PIB par habitant ?",
+                back: "PIB total / Population totale. Il permet d'approcher le niveau de vie moyen d'un pays."
+            },
+            {
+                theme: "theme1",
+                tag: "Thème 1",
+                title: "Parité de Pouvoir d'Achat",
+                front: "Pourquoi utilise-t-on le PIB en parité de pouvoir d'achat (PPA) ?",
+                back: "Pour corriger les différences de niveaux de prix entre pays et comparer plus justement leur pouvoir d'achat réel."
+            },
+            {
+                theme: "theme1",
+                tag: "Thème 1",
+                title: "Définition de la Croissance",
+                front: "Comment définit-on la croissance économique dans le cours ?",
+                back: "La hausse dans le temps du revenu moyen par habitant, et donc du niveau de vie."
+            },
+            {
+                theme: "theme1",
+                tag: "Thème 1",
+                title: "Productivité du Travail",
+                front: "Comment définit-on la productivité du travail ?",
+                back: "La quantité de valeur ajoutée qu'un travailleur produit pendant une unité de temps (heure ou année)."
+            },
+            {
+                theme: "theme1",
+                tag: "Thème 1",
+                title: "Taux d'Activité",
+                front: "Comment calcule-t-on le taux d'activité d'une population ?",
+                back: "Nombre d'actifs / Population en âge de travailler (15-65 ans), exprimé en pourcentage."
+            },
+            {
+                theme: "theme1",
+                tag: "Thème 1",
+                title: "Volume Total de Travail",
+                front: "Comment mesure-t-on le volume total de travail fourni dans une économie ?",
+                back: "Par le nombre total d'heures travaillées par la population active occupée."
+            },
+            {
+                theme: "theme1",
+                tag: "Thème 1",
+                title: "Capital Fixe",
+                front: "Qu'est-ce que le capital fixe en économie ?",
+                back: "L'ensemble des actifs corporels et incorporels utilisés durablement dans la production pendant au moins un an (machines, bâtiments, logiciels...)."
+            },
+            {
+                theme: "theme1",
+                tag: "Thème 1",
+                title: "Accumulation du Capital",
+                front: "Quelle formule décrit l'évolution du stock de capital physique ?",
+                back: "K(t+1) = K(t) - δK(t) + I(t). L'investissement augmente le capital, tandis que son usure le réduit."
+            },
+            {
+                theme: "theme1",
+                tag: "Thème 1",
+                title: "Capital Humain",
+                front: "Quels éléments constituent le capital humain d'un individu ?",
+                back: "Ses connaissances, qualifications, compétences et expériences qui améliorent sa productivité et son employabilité."
+            },
+            {
+                theme: "theme1",
+                tag: "Thème 1",
+                title: "Gary Becker et l'Éducation",
+                front: "Pourquoi Gary Becker considère-t-il l'éducation comme un investissement ?",
+                back: "Parce qu'elle implique des coûts présents, mais augmente les compétences et les revenus potentiels futurs. Becker reçoit le Nobel en 1992."
+            },
+            {
+                theme: "theme1",
+                tag: "Thème 1",
+                title: "Coût d'Opportunité des Études",
+                front: "Quel est le coût d'opportunité d'une année d'études ?",
+                back: "La valeur de ce à quoi on renonce, notamment les revenus professionnels que l'on aurait pu gagner en travaillant."
+            },
+            {
+                theme: "theme1",
+                tag: "Thème 1",
+                title: "Résidu de Solow",
+                front: "Comment mesure-t-on indirectement le progrès technologique dans les modèles de croissance ?",
+                back: "Comme un résidu : la partie de la croissance non expliquée par l'augmentation du travail, du capital physique et du capital humain."
+            },
+            {
+                theme: "theme1",
+                tag: "Thème 1",
+                title: "Institutions et Croissance",
+                front: "Quelles sont les principales conditions institutionnelles nécessaires à la croissance ?",
+                back: "Droits de propriété protégés, stabilité politique, fiscalité stable, liberté d'entreprise et de commerce, faible corruption."
+            },
+            {
+                theme: "theme1",
+                tag: "Thème 1",
+                title: "Ressources Naturelles et Richesse",
+                front: "Les ressources naturelles sont-elles nécessaires et suffisantes pour devenir un pays riche ?",
+                back: "Non. Le Japon est riche sans abondantes ressources naturelles ; le Venezuela montre que leur abondance ne garantit pas la prospérité."
+            },
+
+        
+
+            {
+                theme: "theme2",
+                tag: "Thème 2",
+                title: "Science Positive vs Normative",
+                front: "Quelle est la différence entre science économique positive et normative ?",
+                back: "Positive : décrire et expliquer la réalité. Normative : formuler des recommandations pour modifier la réalité."
+            },
+            {
+                theme: "theme2",
+                tag: "Thème 2",
+                title: "Microéconomie vs Macroéconomie",
+                front: "Quelle est la différence fondamentale entre microéconomie et macroéconomie ?",
+                back: "La micro étudie les décisions individuelles des agents ; la macro étudie les phénomènes économiques agrégés."
+            },
+            {
+                theme: "theme2",
+                tag: "Thème 2",
+                title: "Économie Publique",
+                front: "Que désigne l'économie publique ?",
+                back: "La branche de la science économique qui étudie le rôle et les interventions de l'État dans l'économie."
+            },
+            {
+                theme: "theme2",
+                tag: "Thème 2",
+                title: "Réglementation Économique",
+                front: "Quels sont les principaux moyens réglementaires d'intervention de l'État ?",
+                back: "Normes, réglementations, salaire minimum, règles de concurrence et obligations d'information des consommateurs."
+            },
+            {
+                theme: "theme2",
+                tag: "Thème 2",
+                title: "Fonctions Régaliennes",
+                front: "Quelles sont les grandes fonctions régaliennes traditionnellement attribuées à l'État ?",
+                back: "La défense nationale, la police, la justice et la diplomatie : elles garantissent la sécurité et le cadre juridique."
+            },
+            {
+                theme: "theme2",
+                tag: "Thème 2",
+                title: "Information Circonstancielle (Hayek)",
+                front: "Pourquoi l'information circonstancielle est-elle centrale dans la pensée de Hayek ?",
+                back: "Elle est locale, dispersée et détenue individuellement. Aucun planificateur central ne peut en connaître parfaitement l'ensemble."
+            },
+            {
+                theme: "theme2",
+                tag: "Thème 2",
+                title: "Concurrence Pure et Parfaite",
+                front: "Quels sont les cinq critères de la concurrence pure et parfaite ?",
+                back: "Atomicité, homogénéité des produits, libre entrée, information parfaite et libre circulation des facteurs de production."
+            },
+            {
+                theme: "theme2",
+                tag: "Thème 2",
+                title: "Biens Collectifs",
+                front: "Quelles sont les deux caractéristiques fondamentales d'un bien collectif ?",
+                back: "La non-exclusivité : personne ne peut facilement être exclu. La non-rivalité : la consommation par un individu ne réduit pas celle des autres."
+            },
+            {
+                theme: "theme2",
+                tag: "Thème 2",
+                title: "Externalités",
+                front: "Qu'est-ce qu'une externalité en économie ?",
+                back: "Lorsqu'une activité affecte le bien-être d'un tiers sans compensation financière. Exemple : pollution (négative), éducation (positive)."
+            },
+            {
+                theme: "theme2",
+                tag: "Thème 2",
+                title: "Monopole Naturel",
+                front: "Qu'est-ce qu'un monopole naturel et pourquoi apparaît-il ?",
+                back: "Un marché où le coût unitaire diminue avec la quantité produite. Une seule entreprise peut alors produire plus efficacement."
+            },
+            {
+                theme: "theme2",
+                tag: "Thème 2",
+                title: "Keynes et la Crise de 1929",
+                front: "Selon Keynes, quel mécanisme a aggravé la Grande Dépression ?",
+                back: "L'effondrement de la demande privée et les anticipations pessimistes ont entraîné une baisse des dépenses, puis des revenus et de l'activité."
+            },
+            {
+                theme: "theme2",
+                tag: "Thème 2",
+                title: "Définition de la Récession",
+                front: "À partir de combien de trimestres consécutifs de baisse du PIB parle-t-on de récession ?",
+                back: "Deux trimestres consécutifs de baisse du PIB."
+            },
+
+
+            {
+                theme: "theme3",
+                tag: "Thème 3",
+                title: "Formule du PIB par la Demande",
+                front: "Quelle est la formule du PIB par la demande dans une économie ouverte avec État ?",
+                back: "Y = C + I + G + X - M. Consommation + investissement + dépenses publiques + exportations - importations."
+            },
+            {
+                theme: "theme3",
+                tag: "Thème 3",
+                title: "Consommation Française",
+                front: "Quelle part du PIB français représentait la consommation finale des ménages en 2025 ?",
+                back: "Environ 54 %, soit près de 1 615,5 milliards d'euros."
+            },
+            {
+                theme: "theme3",
+                tag: "Thème 3",
+                title: "Transferts Publics et PIB",
+                front: "Pourquoi les retraites et allocations sociales ne sont-elles pas incluses directement dans G dans le calcul du PIB ?",
+                back: "Ce sont des transferts monétaires, pas des achats de biens et services ou des productions publiques."
+            },
+            {
+                theme: "theme3",
+                tag: "Thème 3",
+                title: "Utilisation du Revenu National",
+                front: "Comment se décompose le revenu national dans une économie avec État et sans échanges extérieurs ?",
+                back: "Y = C + S + T : le revenu est consommé, épargné ou prélevé sous forme d'impôts."
+            },
+            {
+                theme: "theme3",
+                tag: "Thème 3",
+                title: "Identité Épargne-Investissement",
+                front: "Dans une économie fermée sans État, à quoi l'épargne est-elle nécessairement égale ?",
+                back: "S = I. L'épargne nationale finance l'investissement national ex post."
+            },
+            {
+                theme: "theme3",
+                tag: "Thème 3",
+                title: "Épargne et Déficit Public",
+                front: "Quelle identité relie épargne, investissement et déficit public dans une économie fermée ?",
+                back: "S = I + (G - T). L'épargne finance l'investissement privé et le déficit public."
+            },
+            {
+                theme: "theme3",
+                tag: "Thème 3",
+                title: "Effet d'Éviction",
+                front: "Qu'appelle-t-on l'effet d'éviction dans le financement de l'économie ?",
+                back: "Lorsque l'État emprunte une partie de l'épargne disponible, il peut réduire les ressources financières accessibles aux investissements privés."
+            },
+            {
+                theme: "theme3",
+                tag: "Thème 3",
+                title: "Économie Ouverte et Financement",
+                front: "Quelle identité macroéconomique relie épargne, commerce extérieur et déficit public ?",
+                back: "S + (M - X) = I + (G - T). L'épargne étrangère peut financer l'investissement et le déficit public."
+            },
+            {
+                theme: "theme3",
+                tag: "Thème 3",
+                title: "Excédent Commercial et Créances",
+                front: "Pourquoi un pays ayant un excédent commercial accumule-t-il des créances sur l'étranger ?",
+                back: "Il produit davantage qu'il ne dépense intérieurement et prête donc indirectement son excédent de ressources au reste du monde."
+            },
+            {
+                theme: "theme3",
+                tag: "Thème 3",
+                title: "Obligation Financière",
+                front: "Qu'est-ce qu'une obligation sur les marchés financiers ?",
+                back: "Un titre de dette émis par un emprunteur qui s'engage à rembourser le capital à échéance et à verser des intérêts."
+            },
+            {
+                theme: "theme3",
+                tag: "Thème 3",
+                title: "Coupon et Maturité",
+                front: "Que représentent le coupon et la maturité d'une obligation ?",
+                back: "Le coupon correspond aux intérêts périodiques versés ; la maturité désigne la durée restant jusqu'au remboursement."
+            },
+            {
+                theme: "theme3",
+                tag: "Thème 3",
+                title: "Action Financière",
+                front: "Que représente une action pour son détenteur ?",
+                back: "Une part du capital d'une entreprise. Son détenteur devient actionnaire et peut bénéficier de dividendes et de plus-values."
+            },
+            {
+                theme: "theme3",
+                tag: "Thème 3",
+                title: "OAT et BTF",
+                front: "Quelle est la différence entre les OAT et les BTF français ?",
+                back: "Les OAT sont des titres de dette à moyen et long terme (généralement 2 à 50 ans). Les BTF sont à court terme (moins d'un an)."
+            },
+            {
+                theme: "theme3",
+                tag: "Thème 3",
+                title: "Contrainte Budgétaire de l'État",
+                front: "Quelle équation décrit le financement du budget de l'État par les recettes et les emprunts ?",
+                back: "G = T + E. Les dépenses publiques sont financées par les recettes fiscales et les emprunts."
+            },
+            {
+                theme: "theme3",
+                tag: "Thème 3",
+                title: "Indice des Prix à la Consommation",
+                front: "Comment mesure-t-on statistiquement l'inflation ?",
+                back: "Par la variation en pourcentage de l'indice des prix à la consommation (IPC), qui mesure l'évolution du niveau général des prix."
+            },
+            {
+                theme: "theme3",
+                tag: "Thème 3",
+                title: "Chocs Inflationnistes",
+                front: "Quels événements historiques illustrent les deux principales origines de l'inflation ?",
+                back: "Demande : réunification allemande en 1990 et relance post-Covid. Offre : chocs pétroliers de 1973 et 1979 et perturbations de 2021-2022."
+            },
+            {
+                theme: "theme3",
+                tag: "Thème 3",
+                title: "Destruction Monétaire",
+                front: "Que devient la monnaie créée par une banque lorsqu'un emprunteur rembourse son crédit ?",
+                back: "Elle est détruite. La création monétaire liée au crédit est donc temporaire."
+            },
+            {
+                theme: "theme3",
+                tag: "Thème 3",
+                title: "Banque Centrale",
+                front: "Pourquoi qualifie-t-on une banque centrale de « banque des banques » ?",
+                back: "Parce que les banques commerciales y possèdent des comptes et utilisent sa monnaie centrale pour régler leurs paiements entre elles."
+            },
+            {
+                theme: "theme3",
+                tag: "Thème 3",
+                title: "Financement Monétaire de l'État",
+                front: "Comment s'écrit la contrainte budgétaire de l'État lorsqu'on ajoute la création monétaire ?",
+                back: "G = T + E + ΔM. La banque centrale peut créer de la monnaie pour acheter des titres publics, avec un risque inflationniste."
+            },
+
+            {
+                theme: "theme4",
+                tag: "Thème 4",
+                title: "Rapport Interdécile",
+                front: "Comment calcule-t-on le rapport interdécile et que mesure-t-il ?",
+                back: "D9 / D1. Il mesure l'écart entre le seuil de revenu des 10 % les plus riches et celui des 10 % les plus pauvres."
+            },
+            {
+                theme: "theme4",
+                tag: "Thème 4",
+                title: "Déciles D1 et D9",
+                front: "Que représentent le premier décile D1 et le neuvième décile D9 ?",
+                back: "D1 : 10 % gagnent moins. D9 : 90 % gagnent moins et 10 % gagnent davantage."
+            },
+            {
+                theme: "theme4",
+                tag: "Thème 4",
+                title: "Courbe de Lorenz",
+                front: "Que représente la courbe de Lorenz dans l'étude des inégalités ?",
+                back: "Elle représente la part cumulée du revenu détenue par une proportion cumulée de la population."
+            },
+            {
+                theme: "theme4",
+                tag: "Thème 4",
+                title: "Revenu Primaire",
+                front: "Qu'est-ce que le revenu primaire d'un ménage ?",
+                back: "Le revenu directement lié à sa participation au processus de production, avant impôts et transferts."
+            },
+            {
+                theme: "theme4",
+                tag: "Thème 4",
+                title: "Revenu Disponible",
+                front: "Comment passe-t-on du revenu primaire au revenu disponible ?",
+                back: "Revenu disponible = Revenu primaire - Impôts - Cotisations sociales + Transferts."
+            },
+            {
+                theme: "theme4",
+                tag: "Thème 4",
+                title: "Écart de Richesse entre Pays",
+                front: "Comment a évolué l'écart entre les revenus minimum et maximum des pays entre 1800 et 2015 dans le cours ?",
+                back: "Environ 50 à 4 000 dollars en 1800, contre 700 à 100 000 dollars en 2015 : la dispersion internationale s'est fortement accrue."
+            },
+            {
+                theme: "theme4",
+                tag: "Thème 4",
+                title: "Rattrapage Économique",
+                front: "Quels pays illustrent le rattrapage économique de la deuxième moitié du XXe siècle ?",
+                back: "La Chine, la Corée du Sud et le Vietnam, qui ont connu une croissance rapide après avoir commencé leur développement plus tardivement."
+            },
+            {
+                theme: "theme4",
+                tag: "Thème 4",
+                title: "Les Trente Glorieuses",
+                front: "Quelle période désigne-t-on par les Trente Glorieuses en France ?",
+                back: "1945-1973. Une période de forte croissance, de hausse des revenus, de recul de la pauvreté et de réduction des inégalités."
+            },
+            {
+                theme: "theme4",
+                tag: "Thème 4",
+                title: "Nouvelle Géographie des Inégalités",
+                front: "Quelle opposition territoriale caractérise la nouvelle carte des inégalités en France selon Christophe Guilluy ?",
+                back: "L'opposition entre l'espace métropolitain, intégré à la mondialisation, et la France périphérique, composée notamment de petites villes et d'espaces ruraux."
+            },
+            {
+                theme: "theme4",
+                tag: "Thème 4",
+                title: "Courbe de Laffer et Arbitrage",
+                front: "Quel compromis la courbe de Laffer illustre-t-elle entre fiscalité et croissance ?",
+                back: "Une fiscalité trop élevée peut décourager travail, investissement et innovation. Il faut arbitrer entre redistribution et efficacité économique."
+            }
+        ];
+
+        /* ================= STATE VARIABLES ================= */
+        let userExamAnswers = {};
+        let isExamSubmitted = false;
+        let lorenzChartInstance = null;
+
+        // Flashcards Engine State
+        let currentLearnDeck = [];
+        let activeLearnIndex = 0;
+        let isCurrentCardFlipped = false;
+        let totalInitialCards = 0;
+        let masteredCardsCount = 0;
+        let currentThemeFilter = 'all';
+        let currentFlashcardMode = 'learn'; // 'learn' ou 'grid'
+
+        /* ================= ON LOAD INITIALIZATION ================= */
+        window.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            renderExam();
+            initFlashcardsSystem();
+            initLorenzChart();
+            updateKeynesian();
+            calculatePIB();
+        });
+
+        /* ================= TAB SWITCHING ================= */
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(`tab-${tabId}`).classList.remove('hidden');
+
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-indigo-600', 'text-white', 'shadow-md');
+                btn.classList.add('text-slate-400', 'hover:text-white');
+            });
+            const activeBtn = document.getElementById(`tab-btn-${tabId}`);
+            if(activeBtn) activeBtn.classList.add('bg-indigo-600', 'text-white', 'shadow-md');
+
+            document.querySelectorAll('.mob-tab-btn').forEach(btn => {
+                btn.classList.remove('text-indigo-400');
+                btn.classList.add('text-slate-400');
+            });
+            const activeMobBtn = document.getElementById(`mob-btn-${tabId}`);
+            if(activeMobBtn) activeMobBtn.classList.add('text-indigo-400');
+
+            if (tabId === 'simulators' && lorenzChartInstance) {
+                setTimeout(() => lorenzChartInstance.resize(), 100);
+            }
+        }
+
+        /* ================= EXAM RENDER & LOGIC ================= */
+        function renderExam() {
+            const container = document.getElementById('exam-container');
+            container.innerHTML = '';
+
+            exam2025Questions.forEach((q, index) => {
+                const qCard = document.createElement('div');
+                qCard.className = "bg-slate-900 border border-slate-800 p-6 rounded-2xl shadow-md transition-all duration-200";
+                qCard.id = `exam-q-card-${q.id}`;
+
+                let optionsHTML = '';
+                q.options.forEach((opt, optIdx) => {
+                    const letter = String.fromCharCode(97 + optIdx);
+                    optionsHTML += `
+                        <button onclick="selectExamOption(${q.id}, ${optIdx})" 
+                                id="exam-opt-${q.id}-${optIdx}"
+                                class="w-full text-left p-3.5 rounded-xl border border-slate-800 bg-slate-950/60 hover:bg-slate-800/80 hover:border-slate-700 text-sm text-slate-300 transition flex items-start space-x-3">
+                            <span class="w-6 h-6 rounded-lg bg-slate-800 border border-slate-700 text-slate-400 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
+                                ${letter.toUpperCase()}
+                            </span>
+                            <span class="flex-1">${opt}</span>
+                        </button>
+                    `;
+                });
+
+                qCard.innerHTML = `
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">Question ${index + 1} / 30</span>
+                        <span id="badge-status-${q.id}" class="text-[11px] font-semibold text-slate-500">Non répondue</span>
+                    </div>
+                    <h3 class="text-base font-bold text-white mb-4 leading-relaxed">${q.question}</h3>
+                    <div class="space-y-2.5 mb-4">
+                        ${optionsHTML}
+                    </div>
+                    <div id="exam-explanation-${q.id}" class="hidden mt-4 p-4 rounded-xl text-xs leading-relaxed"></div>
+                `;
+
+                container.appendChild(qCard);
+            });
+
+            updateExamProgress();
+        }
+
+        function selectExamOption(qId, selectedIdx) {
+            if (isExamSubmitted) return;
+
+            userExamAnswers[qId] = selectedIdx;
+            const q = exam2025Questions.find(item => item.id === qId);
+
+            q.options.forEach((_, optIdx) => {
+                const btn = document.getElementById(`exam-opt-${qId}-${optIdx}`);
+                if (optIdx === selectedIdx) {
+                    btn.className = "w-full text-left p-3.5 rounded-xl border-2 border-indigo-500 bg-indigo-950/40 text-white font-medium transition flex items-start space-x-3 shadow-md";
+                    btn.querySelector('span').className = "w-6 h-6 rounded-lg bg-indigo-600 text-white flex items-center justify-center text-xs font-bold shrink-0 mt-0.5";
+                } else {
+                    btn.className = "w-full text-left p-3.5 rounded-xl border border-slate-800 bg-slate-950/60 hover:bg-slate-800/80 hover:border-slate-700 text-sm text-slate-400 transition flex items-start space-x-3 opacity-60";
+                    btn.querySelector('span').className = "w-6 h-6 rounded-lg bg-slate-800 border border-slate-700 text-slate-500 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5";
+                }
+            });
+
+            const badge = document.getElementById(`badge-status-${qId}`);
+            badge.innerText = "Cochée";
+            badge.className = "text-[11px] font-semibold text-indigo-400";
+
+            updateExamProgress();
+        }
+
+        function updateExamProgress() {
+            const answeredCount = Object.keys(userExamAnswers).length;
+            const total = exam2025Questions.length;
+
+            document.getElementById('exam-progress-text').innerText = `${answeredCount} / ${total} répondue${answeredCount > 1 ? 's' : ''}`;
+            document.getElementById('exam-progress-bar').style.width = `${(answeredCount / total) * 100}%`;
+        }
+
+        function scrollToUnanswered() {
+            for (let q of exam2025Questions) {
+                if (userExamAnswers[q.id] === undefined) {
+                    const el = document.getElementById(`exam-q-card-${q.id}`);
+                    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    el.classList.add('ring-2', 'ring-indigo-500');
+                    setTimeout(() => el.classList.remove('ring-2', 'ring-indigo-500'), 1500);
+                    break;
+                }
+            }
+        }
+
+        function submitExam() {
+            if (isExamSubmitted) return;
+
+            const answeredCount = Object.keys(userExamAnswers).length;
+            if (answeredCount < 30) {
+                if (!confirm(`Attention : Vous n'avez répondu qu'à ${answeredCount} question(s) sur 30. Souhaitez-vous quand même soumettre votre copie ?`)) {
+                    scrollToUnanswered();
+                    return;
+                }
+            }
+
+            isExamSubmitted = true;
+
+            let score = 0;
+            exam2025Questions.forEach(q => {
+                const selected = userExamAnswers[q.id];
+                const isCorrect = (selected === q.correct);
+                if (isCorrect) score++;
+
+                q.options.forEach((_, optIdx) => {
+                    const btn = document.getElementById(`exam-opt-${q.id}-${optIdx}`);
+                    btn.disabled = true;
+
+                    if (optIdx === q.correct) {
+                        btn.className = "w-full text-left p-3.5 rounded-xl border-2 border-emerald-500 bg-emerald-950/40 text-emerald-100 font-medium transition flex items-start space-x-3";
+                        btn.querySelector('span').className = "w-6 h-6 rounded-lg bg-emerald-500 text-slate-950 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5";
+                    } else if (optIdx === selected && !isCorrect) {
+                        btn.className = "w-full text-left p-3.5 rounded-xl border-2 border-rose-500 bg-rose-950/40 text-rose-100 font-medium transition flex items-start space-x-3";
+                        btn.querySelector('span').className = "w-6 h-6 rounded-lg bg-rose-500 text-white flex items-center justify-center text-xs font-bold shrink-0 mt-0.5";
+                    } else {
+                        btn.className = "w-full text-left p-3.5 rounded-xl border border-slate-800 bg-slate-950/30 text-slate-500 transition flex items-start space-x-3 opacity-30";
+                    }
+                });
+
+                const expBox = document.getElementById(`exam-explanation-${q.id}`);
+                expBox.classList.remove('hidden');
+                if (selected === q.correct) {
+                    expBox.className = "mt-4 p-4 rounded-xl text-xs leading-relaxed bg-emerald-950/30 border border-emerald-800/40 text-emerald-200/90";
+                    expBox.innerHTML = `<strong class="text-emerald-400 block mb-1">✓ Bonne réponse ! (1/1 pt)</strong> ${q.explanation}`;
+                } else {
+                    expBox.className = "mt-4 p-4 rounded-xl text-xs leading-relaxed bg-rose-950/30 border border-rose-800/40 text-rose-200/90";
+                    expBox.innerHTML = `<strong class="text-rose-400 block mb-1">✗ Réponse incorrecte (0/1 pt)</strong> ${q.explanation}`;
+                }
+
+                const badge = document.getElementById(`badge-status-${q.id}`);
+                if (selected === q.correct) {
+                    badge.innerText = "+1 Pt";
+                    badge.className = "text-xs font-extrabold text-emerald-400";
+                } else {
+                    badge.innerText = "0 Pt";
+                    badge.className = "text-xs font-extrabold text-rose-400";
+                }
+            });
+
+            const resultsCard = document.getElementById('results-card');
+            resultsCard.classList.remove('hidden');
+            document.getElementById('final-score').innerText = `${score} / 30`;
+
+            const titleEl = document.getElementById('result-title');
+            const feedbackEl = document.getElementById('result-feedback');
+
+            if (score >= 24) {
+                titleEl.innerText = "Félicitations ! Mention Très Bien 🎉";
+                feedbackEl.innerText = "Excellente maîtrise du programme de Culture Économique ! Vous êtes parfaitement préparé(e) pour l'examen.";
+            } else if (score >= 18) {
+                titleEl.innerText = "Bravo ! Très bon score 👍";
+                feedbackEl.innerText = "Vous avez une solide connaissance globale du cours. Relisez les fiches explicatives sur vos erreurs ci-dessous.";
+            } else if (score >= 15) {
+                titleEl.innerText = "Examen Validé ! Moyenne atteinte ⚖️";
+                feedbackEl.innerText = "Score correct. Pensez à retravailler les points de comptabilité nationale et de politique monétaire.";
+            } else {
+                titleEl.innerText = "Résultat insuffisant — Révisions requises 📚";
+                feedbackEl.innerText = "Utilisez les flashcards et les explications détaillées ci-dessous pour combler vos lacunes avant le jour J !";
+            }
+
+            document.getElementById('header-status').innerText = `${score}/30`;
+            document.getElementById('header-status').className = "font-bold text-emerald-400";
+
+            resultsCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function resetExam() {
+            if (isExamSubmitted && !confirm("Souhaitez-vous réinitialiser le test et effacer vos réponses ?")) return;
+            userExamAnswers = {};
+            isExamSubmitted = false;
+            document.getElementById('results-card').classList.add('hidden');
+            document.getElementById('header-status').innerText = "En cours";
+            document.getElementById('header-status').className = "font-bold text-amber-400";
+            renderExam();
+        }
+
+        /* ================= FLASHCARDS SYSTEM & LEARN MODE ================= */
+        function initFlashcardsSystem() {
+            startLearnSession(currentThemeFilter);
+            renderGridFlashcards();
+        }
+
+        function setFlashcardMode(mode) {
+            currentFlashcardMode = mode;
+            const learnContainer = document.getElementById('flashcard-learn-container');
+            const gridContainer = document.getElementById('flashcards-grid');
+
+            const btnLearn = document.getElementById('view-mode-learn');
+            const btnGrid = document.getElementById('view-mode-grid');
+
+            if (mode === 'learn') {
+                learnContainer.classList.remove('hidden');
+                gridContainer.classList.add('hidden');
+
+                btnLearn.className = "px-3 py-1.5 text-xs font-bold rounded-lg text-white bg-indigo-600 flex items-center gap-1.5 transition";
+                btnGrid.className = "px-3 py-1.5 text-xs font-bold rounded-lg text-slate-400 hover:text-white flex items-center gap-1.5 transition";
+            } else {
+                learnContainer.classList.add('hidden');
+                gridContainer.classList.remove('hidden');
+
+                btnGrid.className = "px-3 py-1.5 text-xs font-bold rounded-lg text-white bg-indigo-600 flex items-center gap-1.5 transition";
+                btnLearn.className = "px-3 py-1.5 text-xs font-bold rounded-lg text-slate-400 hover:text-white flex items-center gap-1.5 transition";
+            }
+        }
+
+        function filterCards(theme, btnElem) {
+            currentThemeFilter = theme;
+
+            if (btnElem) {
+                document.querySelectorAll('.card-filter-btn').forEach(b => {
+                    b.classList.remove('bg-indigo-600', 'text-white');
+                    b.classList.add('bg-slate-800', 'text-slate-300');
+                });
+                btnElem.classList.remove('bg-slate-800', 'text-slate-300');
+                btnElem.classList.add('bg-indigo-600', 'text-white');
+            }
+
+            startLearnSession(theme);
+            renderGridFlashcards();
+        }
+
+        function startLearnSession(themeFilter) {
+            if (themeFilter === 'all') {
+                currentLearnDeck = [...flashcardsData];
+            } else {
+                currentLearnDeck = flashcardsData.filter(c => c.theme === themeFilter);
+            }
+
+            // Shuffle
+            currentLearnDeck.sort(() => Math.random() - 0.5);
+
+            totalInitialCards = currentLearnDeck.length;
+            masteredCardsCount = 0;
+            activeLearnIndex = 0;
+            isCurrentCardFlipped = false;
+
+            renderActiveLearnCard();
+        }
+
+        function renderActiveLearnCard() {
+            const area = document.getElementById('single-card-area');
+            const controls = document.getElementById('learn-action-controls');
+
+            // Update stats
+            document.getElementById('learn-remaining-count').innerText = currentLearnDeck.length;
+            document.getElementById('learn-mastered-count').innerText = masteredCardsCount;
+            document.getElementById('learn-stats-text').innerText = `${masteredCardsCount} / ${totalInitialCards} maîtrisées`;
+
+            const progressPct = totalInitialCards > 0 ? (masteredCardsCount / totalInitialCards) * 100 : 0;
+            document.getElementById('learn-progress-bar').style.width = `${progressPct}%`;
+
+            if (currentLearnDeck.length === 0) {
+                area.innerHTML = `
+                    <div class="bg-slate-900 border border-slate-800 p-8 rounded-2xl text-center space-y-4 shadow-xl">
+                        <div class="w-16 h-16 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto text-2xl">🎉</div>
+                        <h3 class="text-xl font-black text-white">Session terminée avec succès !</h3>
+                        <p class="text-xs text-slate-400 max-w-sm mx-auto">Vous avez maîtrisé l'ensemble des ${totalInitialCards} flashcards de ce paquet.</p>
+                        <button onclick="startLearnSession('${currentThemeFilter}')" class="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs rounded-xl shadow-lg transition inline-flex items-center gap-2">
+                            <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+                            Recommencer ce paquet
+                        </button>
+                    </div>
+                `;
+                controls.classList.add('hidden');
+                lucide.createIcons();
+                return;
+            }
+
+            controls.classList.remove('hidden');
+            const card = currentLearnDeck[activeLearnIndex];
+            isCurrentCardFlipped = false;
+
+            area.innerHTML = `
+                <div class="perspective-1000 h-80 cursor-pointer" onclick="flipSingleLearnCard()">
+                    <div id="active-learn-card-inner" class="relative w-full h-full duration-500 transform-style-3d shadow-xl rounded-2xl">
+                        
+                        <!-- RECTO -->
+                        <div class="absolute inset-0 w-full h-full bg-slate-900 border-2 border-slate-800 rounded-2xl p-6 flex flex-col justify-between backface-hidden">
+                            <div>
+                                <div class="flex justify-between items-center mb-3">
+                                    <span class="text-[10px] font-bold px-2.5 py-1 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 uppercase tracking-wider">${card.tag}</span>
+                                    <i data-lucide="rotate-cw" class="w-4 h-4 text-slate-500"></i>
+                                </div>
+                                <h4 class="text-base font-extrabold text-white mb-2">${card.title}</h4>
+                                <p class="text-sm text-slate-200 mt-4 leading-relaxed font-medium">${card.front}</p>
+                            </div>
+                            <div class="text-[11px] text-slate-500 font-semibold flex items-center justify-between pt-4 border-t border-slate-800/60">
+                                <span>💡 Cliquez sur la carte pour révéler la réponse</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4 text-indigo-400"></i>
+                            </div>
+                        </div>
+
+                        <!-- VERSO -->
+                        <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-indigo-950 via-slate-900 to-slate-900 border-2 border-indigo-500/40 rounded-2xl p-6 flex flex-col justify-between backface-hidden rotate-y-180">
+                            <div>
+                                <div class="flex justify-between items-center mb-3">
+                                    <span class="text-[10px] font-bold px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 uppercase tracking-wider">Réponse / Synthèse</span>
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
+                                </div>
+                                <h5 class="text-sm font-bold text-white mb-2">${card.title}</h5>
+                                <p class="text-xs text-indigo-100 whitespace-pre-line leading-relaxed font-normal">${card.back}</p>
+                            </div>
+                            <div class="text-[10px] text-indigo-300/60 font-medium">Cliquer pour retourner la carte</div>
+                        </div>
+
+                    </div>
+                </div>
+            `;
+
+            lucide.createIcons();
+        }
+
+        function flipSingleLearnCard() {
+            const cardInner = document.getElementById('active-learn-card-inner');
+            if (cardInner) {
+                isCurrentCardFlipped = !isCurrentCardFlipped;
+                cardInner.classList.toggle('rotate-y-180', isCurrentCardFlipped);
+            }
+        }
+
+        function markCurrentCard(knows) {
+            if (currentLearnDeck.length === 0) return;
+
+            if (knows) {
+                // Remove card from active deck
+                currentLearnDeck.splice(activeLearnIndex, 1);
+                masteredCardsCount++;
+            } else {
+                // Move card to the back of the deck
+                const card = currentLearnDeck.splice(activeLearnIndex, 1)[0];
+                currentLearnDeck.push(card);
+            }
+
+            if (currentLearnDeck.length > 0) {
+                activeLearnIndex = activeLearnIndex % currentLearnDeck.length;
+            }
+
+            renderActiveLearnCard();
+        }
+
+        function renderGridFlashcards() {
+            const grid = document.getElementById('flashcards-grid');
+            grid.innerHTML = '';
+
+            const filtered = currentThemeFilter === 'all' 
+                ? flashcardsData 
+                : flashcardsData.filter(c => c.theme === currentThemeFilter);
+
+            filtered.forEach((c) => {
+                const cardEl = document.createElement('div');
+                cardEl.className = "perspective-1000 h-64 cursor-pointer";
+
+                cardEl.innerHTML = `
+                    <div onclick="flipCard(this)" class="card-inner relative w-full h-full duration-500 transform-style-3d shadow-lg rounded-2xl">
+                        <div class="absolute inset-0 w-full h-full bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between backface-hidden">
+                            <div>
+                                <div class="flex justify-between items-center mb-3">
+                                    <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 uppercase tracking-wider">${c.tag}</span>
+                                    <i data-lucide="rotate-cw" class="w-4 h-4 text-slate-500"></i>
+                                </div>
+                                <h4 class="text-base font-bold text-white mb-2">${c.title}</h4>
+                                <p class="text-xs text-slate-300 mt-2 leading-relaxed">${c.front}</p>
+                            </div>
+                            <div class="text-[11px] text-slate-500 font-medium flex items-center justify-between">
+                                <span>Cliquer pour révéler</span>
+                                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                            </div>
+                        </div>
+
+                        <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-indigo-950/90 to-slate-900 border border-indigo-500/30 rounded-2xl p-6 flex flex-col justify-between backface-hidden rotate-y-180">
+                            <div>
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 uppercase tracking-wider">Réponse / Synthèse</span>
+                                <h5 class="text-sm font-bold text-white mt-2 mb-2">${c.title}</h5>
+                                <p class="text-xs text-indigo-100 whitespace-pre-line leading-relaxed">${c.back}</p>
+                            </div>
+                            <div class="text-[10px] text-indigo-300/60 font-medium">Cliquer pour retourner</div>
+                        </div>
+                    </div>
+                `;
+
+                grid.appendChild(cardEl);
+            });
+
+            lucide.createIcons();
+        }
+
+        function flipCard(cardInner) {
+            cardInner.classList.toggle('rotate-y-180');
+        }
+
+        /* ================= SIMULATORS ================= */
+        function updateKeynesian() {
+            const c = parseFloat(document.getElementById('pmc-input').value);
+            const dg = parseFloat(document.getElementById('dg-input').value);
+
+            document.getElementById('pmc-val').innerText = c.toFixed(2);
+            document.getElementById('dg-val').innerText = `${dg} Mld €`;
+
+            const k = 1 / (1 - c);
+            const dy = k * dg;
+
+            document.getElementById('k-result').innerText = k.toFixed(2);
+            document.getElementById('dy-result').innerText = `+${dy.toFixed(1)} Mld €`;
+        }
+
+        function calculatePIB() {
+            const C = parseFloat(document.getElementById('pib-c').value) || 0;
+            const I = parseFloat(document.getElementById('pib-i').value) || 0;
+            const G = parseFloat(document.getElementById('pib-g').value) || 0;
+            const X = parseFloat(document.getElementById('pib-x').value) || 0;
+            const M = parseFloat(document.getElementById('pib-m').value) || 0;
+
+            const solde = X - M;
+            const PIB = C + I + G + solde;
+
+            const soldeEl = document.getElementById('pib-solde');
+            soldeEl.innerText = `${solde >= 0 ? '+' : ''}${solde} Mld €`;
+            soldeEl.className = `py-1.5 font-bold ${solde >= 0 ? 'text-emerald-400' : 'text-rose-400'}`;
+
+            document.getElementById('pib-total').innerText = `${PIB} Mld €`;
+        }
+
+        function initLorenzChart() {
+            const ctx = document.getElementById('lorenzChart').getContext('2d');
+            lorenzChartInstance = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['0%', '20%', '40%', '60%', '80%', '100%'],
+                    datasets: [
+                        {
+                            label: 'Égalité Parfaite (Gini = 0)',
+                            data: [0, 20, 40, 60, 80, 100],
+                            borderColor: '#94a3b8',
+                            borderDash: [5, 5],
+                            borderWidth: 2,
+                            fill: false
+                        },
+                        {
+                            label: 'Courbe de Lorenz Réelle',
+                            data: generateLorenzData(0.35),
+                            borderColor: '#10b981',
+                            backgroundColor: 'rgba(16, 185, 129, 0.15)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.3
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: { grid: { color: '#1e293b' }, ticks: { color: '#94a3b8' } },
+                        y: { grid: { color: '#1e293b' }, ticks: { color: '#94a3b8' }, min: 0, max: 100 }
+                    }
+                }
+            });
+        }
+
+        function generateLorenzData(gini) {
+            const power = 1 + (gini * 2.5);
+            return [0, 20, 40, 60, 80, 100].map(x => Math.pow(x / 100, power) * 100);
+        }
+
+        function updateGiniChart() {
+            const giniVal = parseFloat(document.getElementById('gini-slider').value);
+            document.getElementById('gini-val').innerText = giniVal.toFixed(2);
+
+            const statusEl = document.getElementById('gini-status');
+            if (giniVal < 0.25) {
+                statusEl.innerText = `${giniVal.toFixed(2)} (Très Égalitaire)`;
+                statusEl.className = "text-2xl font-extrabold text-cyan-400 mt-1";
+            } else if (giniVal <= 0.40) {
+                statusEl.innerText = `${giniVal.toFixed(2)} (Inégalité Modérée)`;
+                statusEl.className = "text-2xl font-extrabold text-emerald-400 mt-1";
+            } else {
+                statusEl.innerText = `${giniVal.toFixed(2)} (Inégalité Élevée)`;
+                statusEl.className = "text-2xl font-extrabold text-amber-400 mt-1";
+            }
+
+            if (lorenzChartInstance) {
+                lorenzChartInstance.data.datasets[1].data = generateLorenzData(giniVal);
+                lorenzChartInstance.update();
+            }
+        }
+    </script>
+</body>
+</html>
